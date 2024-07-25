@@ -1,0 +1,22 @@
+:root {
+
+  --padding-textarea: 10px;
+     
+  /*colors*/
+  --primary-link: #007bff;
+  --text-color: #000000;
+  --background-color: #ffffff;
+  --grey-primary: #777;
+  --white: #ffffff;
+
+  /* font size */
+  --font-size-base: 1em;  /* 12px*/
+  --font-size-em-small: 0.8em; 
+  --font-size-h1-small: 1em; /* 12px*/
+
+  /* font weight */
+  --font-weight-base: 400; 
+  
+  /*blogging home*/
+  --header-banner-color: #03a9f5;
+}
