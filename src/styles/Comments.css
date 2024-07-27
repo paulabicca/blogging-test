@@ -10,14 +10,17 @@ h2.main__comments_title {
 }
 
 .main__coments_block {
-  line-height: 2em;
+  margin-bottom: 30px;
+  margin-top: 10px;
 }
 
-.main__coments_info, a {
-  color: #589dbd;
- 
+.main__coments_info,
+a {
+  color: var(--blue-link);
 }
-
+a:hover {
+  color: var(--blue-link-hover);
+}
 
 .main__comments_reply {
   width: 100%;
@@ -27,33 +30,32 @@ h2.main__comments_title {
   font-size: 14px;
 }
 
-.main__comments_btns {
-  margin-top: 10px;
-}
-
 .btn {
   margin-right: 10px;
-  padding: 5px 10px;
-  background-color: #007bff;
-  color: white;
+
+  background-color: transparent;
+  color: var(--grey);
   border: none;
   cursor: pointer;
+  font-weight: bolder;
 }
 
 .btn:hover {
-  background-color: #0056b3;
+  color: var(--black);
+}
+
+p.main__coments_paragraph {
+  line-height: 1.5;
 }
 
 @media (min-width: 1024px) {
   h2.main__comments_title {
     font-size: 30px;
+  }
 
-}
-
-p.main__coments_paragraph {
-  font-size: 18px;
-}
-
+  p.main__coments_paragraph {
+    font-size: 16px;
+  }
 }
 
 @media (max-width: 768px) {
@@ -69,7 +71,6 @@ p.main__coments_paragraph {
 @media (max-width: 480px) {
   .main__comments_btns {
     flex-direction: column;
- 
   }
   .btn {
     width: 100%;

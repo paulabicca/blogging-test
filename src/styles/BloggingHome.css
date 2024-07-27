@@ -19,7 +19,7 @@ main {
 }
 
 p.main__content {
-  line-height: 1.8em;
+  line-height: 2;
 }
 
 .header__content {
@@ -47,7 +47,7 @@ p.main__content {
 .aside__info {
   display: flex;
   flex-direction: column;
-  line-height: 19px;
+  line-height: 1.5;
 }
 
 .aside__name {
@@ -94,7 +94,7 @@ p.main__content {
   }
 
   p.main__content {
-    line-height: 2em;
+    line-height: 1.5;
     font-size: 20px;
   }
 
