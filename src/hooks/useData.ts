@@ -1,16 +1,16 @@
 import { useState, useEffect } from 'react';
 import { formatTimestamp } from '../utils/dateUtils'; 
-import { fetchData, Post } from '../api'; 
+import { fetchData, Post } from '../dataType'; 
+import { NestComments } from '../utils/NestComments';
 
-
-interface UsePostResult {
+interface useDataResult {
     post: Post | null;
     formattedDate: string;
     loading: boolean;
     error: string | null;
   }
   
-  export const usePost = (): UsePostResult => {
+  export const useData = (): useDataResult => {
     const [post, setPost] = useState<Post | null>(null);
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
@@ -21,6 +21,8 @@ interface UsePostResult {
       const loadPost = async () => {
         try {
           const fetchedData = await fetchData();
+          const organizedComments = NestComments(fetchedData.comments);
+          setPost({ ...fetchedData, comments: organizedComments });
           setPost(fetchedData);
         } catch (error) {
           setError("Erro ao carregar os dados.");

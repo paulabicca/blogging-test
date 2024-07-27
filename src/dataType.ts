@@ -16,6 +16,7 @@ export interface Comment {
   author: Author;
   timestamp: string;
   content: string;
+  replies?: Comment[];
 }
 
 export interface Post {
