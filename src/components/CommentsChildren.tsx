@@ -49,7 +49,8 @@ const CommentsChildren = ({
 
   const formatTimestamp = (timestamp: string) => {
     const date = new Date(timestamp);
-    if (isNaN(date.getTime())) return 'Data inválida';
+
+    if (isNaN(date.getTime())) return '****';
     return format(date, "d MMM yyyy, 'às' HH'h':mm", { locale: ptBR });
   };
 
@@ -62,11 +63,11 @@ const CommentsChildren = ({
       </div>
       <p className="main__coments_paragraph">{comment.content}</p>
       <div className="main__comments_btns">
-        <button className="btn">compartilhar</button>
+        <button className="btn">Compartilhar</button>
         <button className="btn" onClick={handleReplyClick}>
-          responder
+          Responder
         </button>
-        <button className="btn">reportar</button>
+        <button className="btn">Reportar</button>
       </div>
       {isReplying && (
         <ReplyTextarea
