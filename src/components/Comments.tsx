@@ -1,44 +1,41 @@
-import { useState } from "react";
-import "../styles/Comments.css";
-import { usePost } from "../hooks/usePost";
+import { useState } from 'react';
+import { rawPost } from '../data/rawPost';
+import { Post, Comment } from '../dataType';
+import CommentsChildren from './CommentsChildren';
 
 const Comments = () => {
-  const [activeCommentId, setActiveCommentId] = useState<number | null>(null);
-  const { post, formattedDate, loading, error } = usePost();
+  const [post, setPost] = useState<Post>(rawPost);
 
-  const handleClick = (commentId: number) => {
-    setActiveCommentId((prevId) => (prevId === commentId ? null : commentId));
+  const addReply = (reply: Comment, parentId: number) => {
+    const addReplyToComment = (comments: Comment[], parentId: number): Comment[] => {
+      return comments.map(comment => {
+        if (comment.id === parentId) {
+          return {
+            ...comment,
+            replies: comment.replies ? [...comment.replies, reply] : [reply]
+          };
+        } else if (comment.replies) {
+          return {
+            ...comment,
+            replies: addReplyToComment(comment.replies, parentId)
+          };
+        } else {
+          return comment;
+        }
+      });
+    };
+
+    setPost(prevPost => ({
+      ...prevPost,
+      comments: addReplyToComment(prevPost.comments, parentId)
+    }));
   };
-
-  if (loading) return <p>Carregando...</p>;
-  if (error) return <p>{error}</p>;
-  if (!post) return <p>Comentário não encontrado.</p>;
 
   return (
     <div className="main__comments">
       <h2 className="main__comments_title">Comentários</h2>
       {post.comments.map((comment) => (
-        <div className="main__coments_block" key={comment.id}>
-          <div className="main__coments_info">
-            <a href="#">{comment.author.username} </a> - {formattedDate}
-          </div>
-          <p className="main__coments_paragraph">{comment.content}</p>
-          {activeCommentId === comment.id && (
-            <textarea
-              className="main__comments_reply"
-              placeholder="Escreva sua resposta aqui :)"
-            ></textarea>
-          )}
-
-          <div className="main__comments_btns">
-            <button className="btn">compartilhar</button>
-            <button className="btn" onClick={() => handleClick(comment.id)}>
-              responder
-            </button>
-
-            <button className="btn">reportar</button>
-          </div>
-        </div>
+        <CommentsChildren key={comment.id} comment={comment} addReply={addReply} />
       ))}
     </div>
   );
