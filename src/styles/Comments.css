@@ -10,8 +10,14 @@ h2.main__comments_title {
 }
 
 .main__coments_block {
-  margin-bottom: 30px;
+  margin-bottom: 15px;
   margin-top: 10px;
+}
+
+.main__coments_block .modal__content {
+  width: 80%;
+  max-width: 600px;
+  min-width: 439px;
 }
 
 .main__coments_info, .main__coments_info a{
@@ -55,25 +61,17 @@ p.main__coments_paragraph {
   p.main__coments_paragraph {
     font-size: 16px;
   }
+  .main__coments_block {
+    margin-bottom: 30px;
+  }
 }
 
 @media (max-width: 768px) {
   .btn {
     font-size: 14px;
-    padding: 8px 16px;
     margin-bottom: 12px;
-    display: flex;
-    justify-content: center;
+
   }
 }
 
-@media (max-width: 480px) {
-  .main__comments_btns {
-    flex-direction: column;
-  }
-  .btn {
-    width: 100%;
-    font-size: 1em;
-    padding: 12px 12px;
-  }
-}
+

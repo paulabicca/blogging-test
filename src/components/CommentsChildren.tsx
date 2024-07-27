@@ -29,13 +29,12 @@ const CommentsChildren = ({
   const authorId = post?.author?.id || 0;
   const authorUsername = post?.author?.username || "Desconhecido";
 
-
   const handleReplyClick = () => {
     if (isReplying && replyContent.trim() !== "") {
       const newReply: Comment = {
-        id: authorId, 
+        id: authorId,
         respondsTo: { id: comment.id },
-        author: { id: authorId, username: authorUsername }, 
+        author: { id: authorId, username: authorUsername },
         timestamp: new Date().toISOString(),
         content: replyContent,
         replies: [],
@@ -48,12 +47,10 @@ const CommentsChildren = ({
     }
   };
 
- 
-  
   const formatTimestamp = (timestamp: string) => {
     const date = new Date(timestamp);
 
-    if (isNaN(date.getTime())) return '****';
+    if (isNaN(date.getTime())) return "****";
     return format(date, "d MMM yyyy, 'às' HH'h':mm", { locale: ptBR });
   };
 
@@ -62,48 +59,51 @@ const CommentsChildren = ({
   return (
     <div className="main__coments_block" style={{ marginLeft: indentation }}>
       <div className="main__coments_info">
-
-       
-       <ModalUsers
-        id="modal_users"
-        title=""
-        trigger={<div><a href="#modal-users">{comment.author.username}</a> - { formattedDate }</div> }
-        content={
-        <div className="modal__card">
-          <div className="modal__card_profile">
-            <img src={user} alt="Descrição da imagem" />
-            <div className="modal__card_profile_name">Joana Vasconcellos </div>
-            <p>Data de filiação:</p>
-            <p>14/10/2010</p>
-            <div>Amigos em comuns: <p>nomeX, nomeY</p></div>
-          </div>
-
-
-
-    
-          <div className="modal__card_posts">
-            <div className="modal__card_profile_name"> Posts</div>
-            <div className="modal__card_posts_content">
-              <p>titulo: Post</p>
-              <p>subtítulo: subtitulo</p>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit(...)</p>
+        <ModalUsers
+          id="modal_users"
+          title=""
+          trigger={
+            <div>
+              <a href="#modal-users">{comment.author.username}</a> -{" "}
+              {formattedDate}
             </div>
-          </div>
-          <div className="modal__card_btns">
-            <button className="btn">Adicionar Usuário</button>
-            <button className="btn">Remover Usuário</button>
-            <button className="btn">Enviar Mensagem </button>
-            <button className="btn">Reportar usuário</button>
-          </div>
-      
-        </div>
-
-        }
-      />
-
-
-
-
+          }
+          content={
+            <div className="modal__card">
+              <div className="modal__card_profile">
+                <img src={user} alt="Descrição da imagem" />
+                <div className="modal__card_profile_name">
+                  Joana Vasconcellos{" "}
+                </div>
+                <p>Data de filiação:</p>
+                <p>14/10/2010</p>
+                <div>
+                  Amigos em comuns: <p>nomeX, nomeY</p>
+                </div>
+              </div>
+              <div className="modal__card_posts">
+                <div className="modal__card_profile_name"> Posts</div>
+                <div className="modal__card_posts_content">
+                  <div className="modal__cards_posts_subscontent">
+                    titulo: <p>post:</p>
+                  </div>
+                  <div className="modal__cards_posts_subscontent">
+                    subtitulo: <p>subtitulo</p>
+                  </div>
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit(...)
+                  </p>
+                </div>
+              </div>
+              <div className="modal__card_btns">
+                <button className="btn">Adicionar Usuário</button>
+                <button className="btn">Remover Usuário</button>
+                <button className="btn">Enviar Mensagem </button>
+                <button className="btn">Reportar usuário</button>
+              </div>
+            </div>
+          }
+        />
       </div>
       <p className="main__coments_paragraph">{comment.content}</p>
       <div className="main__comments_btns">

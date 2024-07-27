@@ -74,7 +74,17 @@
   border-bottom: 1px solid #80808047;
   padding: 15px 0px;
   border-radius: 1%;
-
-  width: 340px;
+  max-width: 340px;
+  width:100%;
   font-size: 13px;
+}
+.modal__cards_posts_subscontent p {
+  display: inline; 
+}
+
+@media (max-width: 768px) {
+  .modal__card_btns .btn {
+    margin-bottom: 0px;
+    font-size: 12px;
+  }
 }
