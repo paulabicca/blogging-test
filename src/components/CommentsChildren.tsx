@@ -65,41 +65,35 @@ const CommentsChildren = ({
 
        
        <ModalUsers
-        id="example-modal"
+        id="modal_users"
         title=""
         trigger={<div><a href="#modal-users">{comment.author.username}</a> - { formattedDate }</div> }
         content={
-        <div className="modal__infos">
-          <div className="modal__infos_basic">
-            <span>Dados Básicos</span>
-            
-            <img src={user} alt="Descrição da imagem" width={50} height={50}/>
-            <p>Joana Vasconcellos </p>
-           
-            <p>Data de filiação: 14/10/2010</p>
-            <p>Amigos em comuns: nomeX, nomeY</p>
-          
+        <div className="modal__card">
+          <div className="modal__card_profile">
+            <img src={user} alt="Descrição da imagem" />
+            <div className="modal__card_profile_name">Joana Vasconcellos </div>
+            <p>Data de filiação:</p>
+            <p>14/10/2010</p>
+            <div>Amigos em comuns: <p>nomeX, nomeY</p></div>
           </div>
 
 
 
-          
-
-
-          
-          <div className="modal__infos_posts">
-            <span>Posts</span>
-            <div>
+    
+          <div className="modal__card_posts">
+            <div className="modal__card_profile_name"> Posts</div>
+            <div className="modal__card_posts_content">
               <p>titulo: Post</p>
               <p>subtítulo: subtitulo</p>
               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit(...)</p>
             </div>
           </div>
-          <div className="modal__infos_btns">
-            <button>Adicionar Usuário</button>
-            <button>Remover Usuário</button>
-            <button>Enviar Mensagem para usuário</button>
-            <button>Reportar usuário</button>
+          <div className="modal__card_btns">
+            <button className="btn">Adicionar Usuário</button>
+            <button className="btn">Remover Usuário</button>
+            <button className="btn">Enviar Mensagem </button>
+            <button className="btn">Reportar usuário</button>
           </div>
       
         </div>
