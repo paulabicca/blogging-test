@@ -1,9 +1,9 @@
 import user from "../assets/imgs/users/avatar1.jpg";
 import Comments from "./Comments";
-import { usePost } from "../hooks/usePost";
+import { useData } from "../hooks/useData";
 
 const MainContent = () => {
-  const { post, formattedDate, loading, error } = usePost();
+  const { post, formattedDate, loading, error } = useData();
 
   if (loading) return <p>Carregando...</p>;
   if (error) return <p>{error}</p>;
