@@ -14,8 +14,7 @@ h2.main__comments_title {
   margin-top: 10px;
 }
 
-.main__coments_info,
-a {
+.main__coments_info, .main__coments_info a{
   color: var(--blue-link);
 }
 a:hover {

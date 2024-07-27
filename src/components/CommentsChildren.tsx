@@ -5,7 +5,8 @@ import ReplyTextarea from "./ReplyTextarea";
 import { useData } from "../hooks/useData";
 import { format } from "date-fns";
 import { ptBR } from "date-fns/locale";
-
+import ModalUsers from "./ModalUsers";
+import user from "../assets/imgs/users/avatar1.jpg";
 
 const calculateIndentation = (id?: number) => {
   if (id === undefined) {
@@ -47,6 +48,8 @@ const CommentsChildren = ({
     }
   };
 
+ 
+  
   const formatTimestamp = (timestamp: string) => {
     const date = new Date(timestamp);
 
@@ -59,7 +62,54 @@ const CommentsChildren = ({
   return (
     <div className="main__coments_block" style={{ marginLeft: indentation }}>
       <div className="main__coments_info">
-        <a href="#">{comment.author.username}</a> - { formattedDate }
+
+       
+       <ModalUsers
+        id="example-modal"
+        title=""
+        trigger={<div><a href="#modal-users">{comment.author.username}</a> - { formattedDate }</div> }
+        content={
+        <div className="modal__infos">
+          <div className="modal__infos_basic">
+            <span>Dados Básicos</span>
+            
+            <img src={user} alt="Descrição da imagem" width={50} height={50}/>
+            <p>Joana Vasconcellos </p>
+           
+            <p>Data de filiação: 14/10/2010</p>
+            <p>Amigos em comuns: nomeX, nomeY</p>
+          
+          </div>
+
+
+
+          
+
+
+          
+          <div className="modal__infos_posts">
+            <span>Posts</span>
+            <div>
+              <p>titulo: Post</p>
+              <p>subtítulo: subtitulo</p>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit(...)</p>
+            </div>
+          </div>
+          <div className="modal__infos_btns">
+            <button>Adicionar Usuário</button>
+            <button>Remover Usuário</button>
+            <button>Enviar Mensagem para usuário</button>
+            <button>Reportar usuário</button>
+          </div>
+      
+        </div>
+
+        }
+      />
+
+
+
+
       </div>
       <p className="main__coments_paragraph">{comment.content}</p>
       <div className="main__comments_btns">
