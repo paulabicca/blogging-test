@@ -1,6 +1,7 @@
-import "../styles/BloggingHome.css";
+
 import header from "../assets/imgs/header-image.jpg";
 import MainContent from "./MainContent";
+import "../styles/BloggingHome.css";
 
 const BloggingHome = () => {
   return (

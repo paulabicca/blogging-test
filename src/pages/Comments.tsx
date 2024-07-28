@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { rawPost } from '../data/rawPost';
 import { Post, Comment } from '../dataType';
 import CommentsChildren from './CommentsChildren';
+import "../styles/Comments.css";
 
 const Comments = () => {
   const [post, setPost] = useState<Post>(rawPost);

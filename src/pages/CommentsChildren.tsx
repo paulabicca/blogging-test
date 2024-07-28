@@ -1,12 +1,13 @@
 import "../styles/Comments.css";
 import { Comment } from "../dataType";
 import { useState } from "react";
-import ReplyTextarea from "./ReplyTextarea";
+import ReplyTextarea from "../components/ReplyTextarea";
 import { useData } from "../hooks/useData";
 import { format } from "date-fns";
 import { ptBR } from "date-fns/locale";
-import ModalUsers from "./ModalUsers";
-import user from "../assets/imgs/users/avatar1.jpg";
+import ModalUsers from "../components/ModalUsers";
+import UsersContent from "../components/UsersContent";
+import "../styles/CommentsChildren.css";
 
 const calculateIndentation = (id?: number) => {
   if (id === undefined) {
@@ -69,40 +70,7 @@ const CommentsChildren = ({
             </div>
           }
           content={
-            <div className="modal__card">
-              <div className="modal__card_profile">
-                <img src={user} alt="Descrição da imagem" />
-                <div className="modal__card_profile_name">
-                  Joana Vasconcellos{" "}
-                </div>
-                <p>Data de filiação:</p>
-                <p>14/10/2010</p>
-                <div>
-                  Amigos em comuns: <p>nomeX, nomeY</p>
-                </div>
-                <div className="modal__card_btns">
-                <button className="btn">Adicionar Usuário</button>
-                <button className="btn">Remover Usuário</button>
-                <button className="btn">Enviar Mensagem </button>
-                <button className="btn">Reportar usuário</button>
-              </div>
-              </div>
-              <div className="modal__card_posts">
-                <div className="modal__card_profile_name"> Posts</div>
-                <div className="modal__card_posts_content">
-                  <div className="modal__cards_posts_subscontent">
-                    titulo: <p>post:</p>
-                  </div>
-                  <div className="modal__cards_posts_subscontent">
-                    subtitulo: <p>subtitulo</p>
-                  </div>
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit(...)
-                  </p>
-                </div>
-              </div>
-
-            </div>
+        <UsersContent/>
           }
         />
       </div>
