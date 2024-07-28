@@ -73,15 +73,16 @@ const UsersContent = ({ userId }: UsersComponentProps) => {
             : "Nenhum amigo em comum"}
         </p>
         <div className="modal__card_btns">
-          <button className="btn">Adicionar Usuário</button>
-          <button className="btn">Remover Usuário</button>
-          <button className="btn">Enviar Mensagem </button>
-          <button className="btn">Reportar usuário</button>
+          <button className="btn modal__btn">Adicionar Usuário</button>
+          <button className="btn modal__btn">Remover Usuário</button>
+          <button className="btn modal__btn">Enviar Mensagem </button>
+          <button className="btn modal__btn">Reportar usuário</button>
         </div>
       </div>
 
       <div className="modal__card_posts">
         <div className="modal__card_profile_name __post"> Posts</div>
+        <div className="modal__cards">
         {allPosts?.map((posts, index) => (
           <div className="modal__card_posts_content" key={index}>
             <div className="modal__cards_posts_subscontent">
@@ -95,6 +96,7 @@ const UsersContent = ({ userId }: UsersComponentProps) => {
             <p dangerouslySetInnerHTML={{ __html: posts?.content }}></p>
           </div>
         ))}
+        </div>
       </div>
     </div>
   );
