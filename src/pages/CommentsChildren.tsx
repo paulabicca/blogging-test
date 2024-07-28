@@ -1,5 +1,5 @@
 import "../styles/Comments.css";
-import { Comment } from "../dataType";
+import { Comment } from "../types/dataType";
 import { useState } from "react";
 import ReplyTextarea from "../components/ReplyTextarea";
 import { useData } from "../hooks/useData";
@@ -25,6 +25,7 @@ const CommentsChildren = ({
 }) => {
   const indentation = calculateIndentation(comment.respondsTo?.id);
   const [isReplying, setIsReplying] = useState(false);
+  const [userId, setUserId] = useState<number>(0);
   const [replyContent, setReplyContent] = useState("");
   const { post } = useData();
   const authorId = post?.author?.id || 0;
@@ -57,6 +58,12 @@ const CommentsChildren = ({
 
   const formattedDate = formatTimestamp(comment.timestamp);
 
+  const handleId = () => {
+    if (comment && comment.author && comment.author.id) {
+      setUserId(comment.author.id);
+    }
+  };
+
   return (
     <div className="main__coments_block" style={{ marginLeft: indentation }}>
       <div className="main__coments_info">
@@ -65,12 +72,12 @@ const CommentsChildren = ({
           title=""
           trigger={
             <div>
-              <a href="#modal-users">{comment.author.username}</a> -{" "}
+              <a href="#modal-users" onClick={handleId}>{comment.author.username}</a> - {" "}
               {formattedDate}
             </div>
           }
           content={
-        <UsersContent/>
+        <UsersContent userId={userId}/>
           }
         />
       </div>
