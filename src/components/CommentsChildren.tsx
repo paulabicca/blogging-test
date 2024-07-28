@@ -80,6 +80,12 @@ const CommentsChildren = ({
                 <div>
                   Amigos em comuns: <p>nomeX, nomeY</p>
                 </div>
+                <div className="modal__card_btns">
+                <button className="btn">Adicionar Usuário</button>
+                <button className="btn">Remover Usuário</button>
+                <button className="btn">Enviar Mensagem </button>
+                <button className="btn">Reportar usuário</button>
+              </div>
               </div>
               <div className="modal__card_posts">
                 <div className="modal__card_profile_name"> Posts</div>
@@ -95,12 +101,7 @@ const CommentsChildren = ({
                   </p>
                 </div>
               </div>
-              <div className="modal__card_btns">
-                <button className="btn">Adicionar Usuário</button>
-                <button className="btn">Remover Usuário</button>
-                <button className="btn">Enviar Mensagem </button>
-                <button className="btn">Reportar usuário</button>
-              </div>
+
             </div>
           }
         />

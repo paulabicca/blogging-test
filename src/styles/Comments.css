@@ -18,6 +18,7 @@ h2.main__comments_title {
   width: 80%;
   max-width: 600px;
   min-width: 439px;
+  padding: 0px;
 }
 
 .main__coments_info, .main__coments_info a{

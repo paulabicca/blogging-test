@@ -41,32 +41,34 @@
   display: grid;
   grid-template-columns: 1fr 2fr;
   column-gap: 8px;
-  height: 300px;
 }
+
 .modal__card img {
   border-radius: 50%;
   width:100px;
   height: 100px;
-  margin-bottom: 8px;
+  display: block;
+  margin: 0 auto; 
+  border: 3px solid var(--white);
 }
 
 .modal__card_btns {
   margin-top: 20px;
-  position: absolute;
-  top: 65%;
-  display: grid;
-  justify-items: left;
 }
 .modal__card_profile_name {
   font-weight: bolder;
-  margin-bottom: 12px;
+  margin: 13px 0px;
 }
 .modal__card_profile {
   font-size: 14px;
+  padding: 20px;
+  background: var(--modal-profile);
 }
 .modal__card_posts {
-  height: 300px;
+  height: 339px;
   overflow-y: auto;
+  padding: 20px;
+  width: 362px;
 }
 
 .modal__card_posts_content {
@@ -74,7 +76,6 @@
   border-bottom: 1px solid #80808047;
   padding: 15px 0px;
   border-radius: 1%;
-  max-width: 340px;
   width:100%;
   font-size: 13px;
 }
