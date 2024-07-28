@@ -1,4 +1,4 @@
-import { rawPost } from "./data/rawPost";
+import { rawPost } from "../data/rawPost";
 
 export const fetchData = async (): Promise<Post> => {
   await new Promise((resolve) => setTimeout(resolve, 1000));

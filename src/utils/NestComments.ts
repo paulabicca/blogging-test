@@ -1,4 +1,4 @@
-import { Comment } from '../dataType';
+import { Comment } from '../types/dataType';
 
 export const NestComments = (comments: Comment[]) => {
   const map = new Map<number, Comment>();
