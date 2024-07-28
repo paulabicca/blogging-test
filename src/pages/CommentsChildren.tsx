@@ -1,11 +1,13 @@
 import "../styles/Comments.css";
-import { Comment } from "../dataType";
+import { Comment } from "../types/dataType";
 import { useState } from "react";
-import ReplyTextarea from "./ReplyTextarea";
+import ReplyTextarea from "../components/ReplyTextarea";
 import { useData } from "../hooks/useData";
 import { format } from "date-fns";
 import { ptBR } from "date-fns/locale";
-
+import ModalUsers from "../components/ModalUsers";
+import UsersContent from "../components/UsersContent";
+import "../styles/CommentsChildren.css";
 
 const calculateIndentation = (id?: number) => {
   if (id === undefined) {
@@ -23,18 +25,18 @@ const CommentsChildren = ({
 }) => {
   const indentation = calculateIndentation(comment.respondsTo?.id);
   const [isReplying, setIsReplying] = useState(false);
+  const [userId, setUserId] = useState<number>(0);
   const [replyContent, setReplyContent] = useState("");
   const { post } = useData();
   const authorId = post?.author?.id || 0;
   const authorUsername = post?.author?.username || "Desconhecido";
 
-
   const handleReplyClick = () => {
     if (isReplying && replyContent.trim() !== "") {
       const newReply: Comment = {
-        id: authorId, 
+        id: authorId,
         respondsTo: { id: comment.id },
-        author: { id: authorId, username: authorUsername }, 
+        author: { id: authorId, username: authorUsername },
         timestamp: new Date().toISOString(),
         content: replyContent,
         replies: [],
@@ -50,16 +52,34 @@ const CommentsChildren = ({
   const formatTimestamp = (timestamp: string) => {
     const date = new Date(timestamp);
 
-    if (isNaN(date.getTime())) return '****';
+    if (isNaN(date.getTime())) return "****";
     return format(date, "d MMM yyyy, 'às' HH'h':mm", { locale: ptBR });
   };
 
   const formattedDate = formatTimestamp(comment.timestamp);
 
+  const handleId = () => {
+    if (comment && comment.author && comment.author.id) {
+      setUserId(comment.author.id);
+    }
+  };
+
   return (
     <div className="main__coments_block" style={{ marginLeft: indentation }}>
       <div className="main__coments_info">
-        <a href="#">{comment.author.username}</a> - { formattedDate }
+        <ModalUsers
+          id="modal_users"
+          title=""
+          trigger={
+            <div>
+              <a href="#modal-users" onClick={handleId}>{comment.author.username}</a> - {" "}
+              {formattedDate}
+            </div>
+          }
+          content={
+        <UsersContent userId={userId}/>
+          }
+        />
       </div>
       <p className="main__coments_paragraph">{comment.content}</p>
       <div className="main__comments_btns">

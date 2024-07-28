@@ -1,5 +1,5 @@
 import "./Global.css";
-import BloggingHome from "./components/BloggingHome";
+import BloggingHome from "./pages/BloggingHome";
 
 function App() {
   return (

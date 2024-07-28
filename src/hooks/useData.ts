@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { formatTimestamp } from '../utils/dateUtils'; 
-import { fetchData, Post } from '../dataType'; 
+import { fetchData, Post } from '../types/dataType'; 
 import { NestComments } from '../utils/NestComments';
 
 interface useDataResult {
