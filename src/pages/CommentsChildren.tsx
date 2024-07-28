@@ -52,11 +52,11 @@ const CommentsChildren = ({
   const formatTimestamp = (timestamp: string) => {
     const date = new Date(timestamp);
 
-    if (isNaN(date.getTime())) return "****";
+    if (isNaN(date.getTime())) return "00/00/0000";
     return format(date, "d MMM yyyy, 'às' HH'h':mm", { locale: ptBR });
   };
 
-  const formattedDate = formatTimestamp(comment.timestamp);
+  const formattedDate = formatTimestamp(comment?.timestamp);
 
   const handleId = () => {
     if (comment && comment.author && comment.author.id) {
