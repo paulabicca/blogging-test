@@ -64,18 +64,14 @@ const UsersContent = ({ userId }: UsersComponentProps) => {
       <div className="modal__card_profile" key={foundUser?.id}>
         <img src={userImage} alt="Descrição da imagem" />
         <div className="modal__card_profile_name">{foundUser?.username}</div>
-        <p>Data de filiação:</p>
+        <p className="modal__card_style_title">Data de filiação:</p>
         <p>{formattedDate}</p>
-
-        <div>
-          Amigos em comuns:{" "}
-          <p>
-            {commonFriendNames.length > 0
-              ? commonFriendNames.join(", ")
-              : "Nenhum amigo em comum"}
-          </p>
-        </div>
-
+        <p className="modal__card_style_title"> Amigos em comuns: </p>
+        <p>
+          {commonFriendNames.length > 0
+            ? commonFriendNames.join(", ")
+            : "Nenhum amigo em comum"}
+        </p>
         <div className="modal__card_btns">
           <button className="btn">Adicionar Usuário</button>
           <button className="btn">Remover Usuário</button>
@@ -85,14 +81,16 @@ const UsersContent = ({ userId }: UsersComponentProps) => {
       </div>
 
       <div className="modal__card_posts">
-        <div className="modal__card_profile_name"> Posts</div>
+        <div className="modal__card_profile_name __post"> Posts</div>
         {allPosts?.map((posts, index) => (
           <div className="modal__card_posts_content" key={index}>
             <div className="modal__cards_posts_subscontent">
-              titulo: <p>{posts?.title}</p>
+              <p className="modal__card_style_title">Título:</p>
+              <p>{posts?.title}</p>
             </div>
             <div className="modal__cards_posts_subscontent">
-              subtitulo: <p>{posts?.subtitle}</p>
+              <p className="modal__card_style_title">Subtítulo: </p>
+              <p>{posts?.subtitle}</p>
             </div>
             <p dangerouslySetInnerHTML={{ __html: posts?.content }}></p>
           </div>

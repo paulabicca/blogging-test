@@ -32,7 +32,7 @@
     padding: 20px;
     width: 362px;
   }
-  
+
   .modal__card_posts_content {
     cursor:pointer;
     border-bottom: 1px solid #80808047;
@@ -41,10 +41,15 @@
     width:100%;
     font-size: 13px;
   }
+  .modal__cards_posts_subscontent {
+    margin-bottom: 7px;
+  }
   .modal__cards_posts_subscontent p {
     display: inline; 
   }
-  
+  p.modal__card_style_title {
+    font-weight: bolder;
+  }
   @media (max-width: 768px) {
     .modal__card_btns .btn {
       margin-bottom: 0px;
