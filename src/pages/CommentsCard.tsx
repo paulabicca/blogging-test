@@ -31,6 +31,8 @@ const CommentsCard = ({
   const authorId = post?.author?.id || 0;
   const authorUsername = post?.author?.username || "Desconhecido";
 
+
+
   const handleReplyClick = () => {
     if (isReplying && replyContent.trim() !== "") {
       const newReply: Comment = {
@@ -59,7 +61,7 @@ const CommentsCard = ({
   const formattedDate = formatTimestamp(comment?.timestamp);
 
   const handleId = () => {
-    if (comment && comment.author && comment.author.id) {
+    if (comment && comment?.author && comment?.author?.id) {
       setUserId(comment.author.id);
     }
   };
