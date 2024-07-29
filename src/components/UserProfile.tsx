@@ -1,24 +1,23 @@
-import "../styles/UsersContent.css";
-
-import userImage from "../assets/imgs/users/user-default.png";
+import { useData } from "../hooks/useData";
 import { useEffect, useState } from "react";
-import { fetchUsers, User } from "../types/fetchUsers";
-import { formatTimestamp } from "../utils/dateUtils";
-
+import { fetchUsers, User } from "../types/Users";
+import { FormatTimestamp } from "../utils/FormatTimestamp";
+import "../styles/UserProfile.css";
+import userImage from "../assets/imgs/users/user-default.png";
 interface UsersComponentProps {
   userId: number;
 }
 
-const UsersContent = ({ userId }: UsersComponentProps) => {
+const UserProfile = ({ userId }: UsersComponentProps) => {
   const [users, setUsers] = useState<User[]>([]);
   const [error, setError] = useState<string | null>(null);
-
+  const { loading } = useData();
   const foundUser = users.find((user) => user?.id === userId);
-  const formattedDate = formatTimestamp(foundUser?.memberSince);
+  const formattedDate = FormatTimestamp(foundUser?.memberSince);
   const allPosts = foundUser?.posts;
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchPosts = async () => {
       try {
         const users = await fetchUsers();
         setUsers(users);
@@ -27,7 +26,7 @@ const UsersContent = ({ userId }: UsersComponentProps) => {
       }
     };
 
-    fetchData();
+    fetchPosts();
   }, [users]);
 
   if (error) return <div>Error: {error}</div>;
@@ -83,23 +82,32 @@ const UsersContent = ({ userId }: UsersComponentProps) => {
       <div className="modal__card_posts">
         <div className="modal__card_profile_name __post"> Posts</div>
         <div className="modal__cards">
-        {allPosts?.map((posts, index) => (
-          <div className="modal__card_posts_content" key={index}>
-            <div className="modal__cards_posts_subscontent">
-              <p className="modal__card_style_title">Título:</p>
-              <p>{posts?.title}</p>
-            </div>
-            <div className="modal__cards_posts_subscontent">
-              <p className="modal__card_style_title">Subtítulo: </p>
-              <p>{posts?.subtitle}</p>
-            </div>
-            <p dangerouslySetInnerHTML={{ __html: posts?.content }}></p>
-          </div>
-        ))}
+          {loading ? (
+            <p>Carregando</p>
+          ) : (
+            <>
+              {" "}
+              {allPosts?.map((posts, index) => (
+                <div key={index}>
+                  <div className="modal__card_posts_content" >
+                    <div className="modal__cards_posts_subscontent">
+                      <p className="modal__card_style_title">Título:</p>
+                      <p>{posts?.title}</p>
+                    </div>
+                    <div className="modal__cards_posts_subscontent">
+                      <p className="modal__card_style_title">Subtítulo: </p>
+                      <p>{posts?.subtitle}</p>
+                    </div>
+                    <p dangerouslySetInnerHTML={{ __html: posts?.content }}></p>
+                  </div>
+                </div>
+              ))}
+            </>
+          )}
         </div>
       </div>
     </div>
   );
 };
 
-export default UsersContent;
+export default UserProfile;

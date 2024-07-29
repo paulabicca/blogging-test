@@ -1,10 +1,10 @@
 import { useState } from 'react';
+import CommentsCard from './CommentsCard';
 import { rawPost } from '../data/rawPost';
-import { Post, Comment } from '../types/dataType';
-import CommentsChildren from './CommentsChildren';
-import "../styles/Comments.css";
+import { Post, Comment } from '../types/Posts';
+import "../styles/CommentsList.css";
 
-const Comments = () => {
+const CommentsList = () => {
   const [post, setPost] = useState<Post>(rawPost);
 
   const addReply = (reply: Comment, parentId: number) => {
@@ -36,10 +36,10 @@ const Comments = () => {
     <div className="main__comments">
       <h2 className="main__comments_title">Comentários</h2>
       {post.comments.map((comment) => (
-        <CommentsChildren key={comment.id} comment={comment} addReply={addReply} />
+        <CommentsCard key={comment.id} comment={comment} addReply={addReply} />
       ))}
     </div>
   );
 };
 
-export default Comments;
+export default CommentsList;

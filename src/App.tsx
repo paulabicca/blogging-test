@@ -1,10 +1,10 @@
 import "./Global.css";
-import BloggingHome from "./pages/BloggingHome";
+import HomePage from "./pages/HomePage";
 
 function App() {
   return (
     <>
-      <BloggingHome/>
+      <HomePage/>
     </>
   );
 }

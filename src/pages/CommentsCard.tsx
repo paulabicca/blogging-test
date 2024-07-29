@@ -1,13 +1,13 @@
-import "../styles/Comments.css";
-import { Comment } from "../types/dataType";
+import "../styles/CommentsList.css";
+import { Comment } from "../types/Posts";
 import { useState } from "react";
 import ReplyTextarea from "../components/ReplyTextarea";
 import { useData } from "../hooks/useData";
 import { format } from "date-fns";
 import { ptBR } from "date-fns/locale";
-import ModalUsers from "../components/ModalUsers";
-import UsersContent from "../components/UsersContent";
-import "../styles/CommentsChildren.css";
+import Modal from "../components/Modal";
+import UserProfile from "../components/UserProfile";
+import "../styles/CommentsCard.css";
 
 const calculateIndentation = (id?: number) => {
   if (id === undefined) {
@@ -16,7 +16,7 @@ const calculateIndentation = (id?: number) => {
   return id >= 2 ? 20 * Math.pow(2, id - 2) : 0;
 };
 
-const CommentsChildren = ({
+const CommentsCard = ({
   comment,
   addReply,
 }: {
@@ -30,6 +30,8 @@ const CommentsChildren = ({
   const { post } = useData();
   const authorId = post?.author?.id || 0;
   const authorUsername = post?.author?.username || "Desconhecido";
+
+
 
   const handleReplyClick = () => {
     if (isReplying && replyContent.trim() !== "") {
@@ -59,7 +61,7 @@ const CommentsChildren = ({
   const formattedDate = formatTimestamp(comment?.timestamp);
 
   const handleId = () => {
-    if (comment && comment.author && comment.author.id) {
+    if (comment && comment?.author && comment?.author?.id) {
       setUserId(comment.author.id);
     }
   };
@@ -67,7 +69,7 @@ const CommentsChildren = ({
   return (
     <div className="main__coments_block" style={{ marginLeft: indentation }}>
       <div className="main__coments_info">
-        <ModalUsers
+        <Modal
           id="modal_users"
           title=""
           trigger={
@@ -77,7 +79,7 @@ const CommentsChildren = ({
             </div>
           }
           content={
-        <UsersContent userId={userId}/>
+        <UserProfile userId={userId}/>
           }
         />
       </div>
@@ -92,6 +94,7 @@ const CommentsChildren = ({
       {isReplying && (
         <ReplyTextarea
           value={replyContent}
+          message={"Digite aqui sua mensagem :)"}
           onChange={(e) => setReplyContent(e.target.value)}
           onSave={handleReplyClick}
         />
@@ -99,7 +102,7 @@ const CommentsChildren = ({
       {comment.replies && comment.replies.length > 0 && (
         <div>
           {comment.replies.map((reply) => (
-            <CommentsChildren
+            <CommentsCard
               key={reply.id}
               comment={reply}
               addReply={addReply}
@@ -111,4 +114,4 @@ const CommentsChildren = ({
   );
 };
 
-export default CommentsChildren;
+export default CommentsCard;

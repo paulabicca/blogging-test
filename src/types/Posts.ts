@@ -1,10 +1,5 @@
 import { rawPost } from "../data/rawPost";
 
-export const fetchData = async (): Promise<Post> => {
-  await new Promise((resolve) => setTimeout(resolve, 1000));
-  return rawPost;
-};
-
 export interface Author {
   id: number;
   username: string;
@@ -28,3 +23,10 @@ export interface Post {
   content: string;
   comments: Comment[];
 }
+
+export const fetchPosts = async (): Promise<Post> => {
+  await new Promise((resolve) => setTimeout(resolve, 1000));
+  return rawPost;
+};
+
+

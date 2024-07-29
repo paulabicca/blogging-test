@@ -13,12 +13,5 @@ a:hover {
   color: var(--blue-link-hover);
 }
 
-.main__comments_reply {
-  width: 100%;
-  height: 100px;
-  margin-top: 10px;
-  padding: 10px;
-  font-size: 14px;
-}
 
 

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import { formatTimestamp } from '../utils/dateUtils'; 
-import { fetchData, Post } from '../types/dataType'; 
+import { FormatTimestamp } from '../utils/FormatTimestamp'; 
+import { fetchPosts, Post } from '../types/Posts'; 
 import { NestComments } from '../utils/NestComments';
 
 interface useDataResult {
@@ -15,12 +15,12 @@ interface useDataResult {
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
   
-    const formattedDate = post ? formatTimestamp(post.timestamp) : ''; 
+    const formattedDate = post ? FormatTimestamp(post.timestamp) : ''; 
 
     useEffect(() => {
       const loadPost = async () => {
         try {
-          const fetchedData = await fetchData();
+          const fetchedData = await fetchPosts();
           const organizedComments = NestComments(fetchedData.comments);
           setPost({ ...fetchedData, comments: organizedComments });
           setPost(fetchedData);
