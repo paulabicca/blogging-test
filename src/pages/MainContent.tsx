@@ -1,5 +1,5 @@
 import user from "../assets/imgs/users/avatar1.jpg";
-import Comments from "./Comments";
+import CommentsList from "./CommentsList";
 import { useData } from "../hooks/useData";
 
 const MainContent = () => {
@@ -17,7 +17,7 @@ const MainContent = () => {
       </div>
 
       <div className="aside">
-        <img src={user} alt="Descrição da imagem" className="aside__icon" />
+        <img src={user} alt="Imagem do usuário" className="aside__icon" />
         <div className="aside__info">
           <p className="aside__name">{post.author.username}</p>
           <p className="aside__date">{formattedDate}</p>
@@ -29,7 +29,7 @@ const MainContent = () => {
         dangerouslySetInnerHTML={{ __html: post.content }}
       />
 
-      <Comments />
+      <CommentsList />
     </main>
   );
 };

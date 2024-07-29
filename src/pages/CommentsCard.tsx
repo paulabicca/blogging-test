@@ -1,4 +1,4 @@
-import "../styles/Comments.css";
+import "../styles/CommentsList.css";
 import { Comment } from "../types/dataType";
 import { useState } from "react";
 import ReplyTextarea from "../components/ReplyTextarea";
@@ -6,8 +6,8 @@ import { useData } from "../hooks/useData";
 import { format } from "date-fns";
 import { ptBR } from "date-fns/locale";
 import Modal from "../components/Modal";
-import UsersContent from "./UsersContent";
-import "../styles/CommentsChildren.css";
+import UserProfile from "../components/UserProfile";
+import "../styles/CommentsCard.css";
 
 const calculateIndentation = (id?: number) => {
   if (id === undefined) {
@@ -16,7 +16,7 @@ const calculateIndentation = (id?: number) => {
   return id >= 2 ? 20 * Math.pow(2, id - 2) : 0;
 };
 
-const CommentsChildren = ({
+const CommentsCard = ({
   comment,
   addReply,
 }: {
@@ -77,7 +77,7 @@ const CommentsChildren = ({
             </div>
           }
           content={
-        <UsersContent userId={userId}/>
+        <UserProfile userId={userId}/>
           }
         />
       </div>
@@ -100,7 +100,7 @@ const CommentsChildren = ({
       {comment.replies && comment.replies.length > 0 && (
         <div>
           {comment.replies.map((reply) => (
-            <CommentsChildren
+            <CommentsCard
               key={reply.id}
               comment={reply}
               addReply={addReply}
@@ -112,4 +112,4 @@ const CommentsChildren = ({
   );
 };
 
-export default CommentsChildren;
+export default CommentsCard;

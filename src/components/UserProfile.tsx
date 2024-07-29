@@ -1,15 +1,16 @@
-import "../styles/UsersContent.css";
+
 
 import userImage from "../assets/imgs/users/user-default.png";
 import { useEffect, useState } from "react";
 import { fetchUsers, User } from "../types/fetchUsers";
 import { formatTimestamp } from "../utils/dateUtils";
+import "../styles/UserProfile.css";
 
 interface UsersComponentProps {
   userId: number;
 }
 
-const UsersContent = ({ userId }: UsersComponentProps) => {
+const UserProfile = ({ userId }: UsersComponentProps) => {
   const [users, setUsers] = useState<User[]>([]);
   const [error, setError] = useState<string | null>(null);
 
@@ -83,23 +84,27 @@ const UsersContent = ({ userId }: UsersComponentProps) => {
       <div className="modal__card_posts">
         <div className="modal__card_profile_name __post"> Posts</div>
         <div className="modal__cards">
-        {allPosts?.map((posts, index) => (
-          <div className="modal__card_posts_content" key={index}>
-            <div className="modal__cards_posts_subscontent">
-              <p className="modal__card_style_title">Título:</p>
-              <p>{posts?.title}</p>
+          {allPosts?.map((posts, index) => (
+            <div className="modal__card_posts_content" key={index}>
+              <div className="modal__cards_posts_subscontent">
+                <p className="modal__card_style_title">Título:</p>
+                <p>{posts?.title}</p>
+              </div>
+              <div className="modal__cards_posts_subscontent">
+                <p className="modal__card_style_title">Subtítulo: </p>
+                <p>{posts?.subtitle}</p>
+              </div>
+              {posts?.content?.length > 1 ? (
+                <p dangerouslySetInnerHTML={{ __html: posts?.content }}></p>
+              ) : (
+                "Carregando"
+              )}
             </div>
-            <div className="modal__cards_posts_subscontent">
-              <p className="modal__card_style_title">Subtítulo: </p>
-              <p>{posts?.subtitle}</p>
-            </div>
-            <p dangerouslySetInnerHTML={{ __html: posts?.content }}></p>
-          </div>
-        ))}
+          ))}
         </div>
       </div>
     </div>
   );
 };
 
-export default UsersContent;
+export default UserProfile;
