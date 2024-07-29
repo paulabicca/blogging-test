@@ -2,8 +2,8 @@
 
 import userImage from "../assets/imgs/users/user-default.png";
 import { useEffect, useState } from "react";
-import { fetchUsers, User } from "../types/fetchUsers";
-import { formatTimestamp } from "../utils/dateUtils";
+import { fetchUsers, User } from "../types/Users";
+import { FormatTimestamp } from "../utils/FormatTimestamp";
 import "../styles/UserProfile.css";
 
 interface UsersComponentProps {
@@ -15,11 +15,11 @@ const UserProfile = ({ userId }: UsersComponentProps) => {
   const [error, setError] = useState<string | null>(null);
 
   const foundUser = users.find((user) => user?.id === userId);
-  const formattedDate = formatTimestamp(foundUser?.memberSince);
+  const formattedDate = FormatTimestamp(foundUser?.memberSince);
   const allPosts = foundUser?.posts;
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchPosts = async () => {
       try {
         const users = await fetchUsers();
         setUsers(users);
@@ -28,7 +28,7 @@ const UserProfile = ({ userId }: UsersComponentProps) => {
       }
     };
 
-    fetchData();
+    fetchPosts();
   }, [users]);
 
   if (error) return <div>Error: {error}</div>;

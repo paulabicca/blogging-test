@@ -1,5 +1,5 @@
 import "../styles/CommentsList.css";
-import { Comment } from "../types/dataType";
+import { Comment } from "../types/Posts";
 import { useState } from "react";
 import ReplyTextarea from "../components/ReplyTextarea";
 import { useData } from "../hooks/useData";

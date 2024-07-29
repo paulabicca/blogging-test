@@ -1,7 +1,7 @@
 import { format } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
 
-export const formatTimestamp = (timestamp?: string) => {
+export const FormatTimestamp = (timestamp?: string) => {
   if (!timestamp) {
     return 'Data não disponível';
   }

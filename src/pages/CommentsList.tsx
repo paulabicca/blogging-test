@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import CommentsCard from './CommentsCard';
 import { rawPost } from '../data/rawPost';
-import { Post, Comment } from '../types/dataType';
+import { Post, Comment } from '../types/Posts';
 import "../styles/CommentsList.css";
 
 const CommentsList = () => {
