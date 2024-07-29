@@ -5,8 +5,8 @@ import ReplyTextarea from "../components/ReplyTextarea";
 import { useData } from "../hooks/useData";
 import { format } from "date-fns";
 import { ptBR } from "date-fns/locale";
-import ModalUsers from "../components/ModalUsers";
-import UsersContent from "../components/UsersContent";
+import Modal from "../components/Modal";
+import UsersContent from "./UsersContent";
 import "../styles/CommentsChildren.css";
 
 const calculateIndentation = (id?: number) => {
@@ -67,7 +67,7 @@ const CommentsChildren = ({
   return (
     <div className="main__coments_block" style={{ marginLeft: indentation }}>
       <div className="main__coments_info">
-        <ModalUsers
+        <Modal
           id="modal_users"
           title=""
           trigger={
@@ -92,6 +92,7 @@ const CommentsChildren = ({
       {isReplying && (
         <ReplyTextarea
           value={replyContent}
+          message={"Digite aqui sua mensagem :)"}
           onChange={(e) => setReplyContent(e.target.value)}
           onSave={handleReplyClick}
         />

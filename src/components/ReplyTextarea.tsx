@@ -1,19 +1,22 @@
 import React from "react";
+import "../styles/ReplyTextarea.css";
 
 const ReplyTextarea = ({
   value,
+  message,
   onChange,
   onSave,
 }: {
   value: string;
+  message: string;
   onChange: React.ChangeEventHandler<HTMLTextAreaElement>;
   onSave: () => void;
 }) => {
   return (
     <div>
       <textarea
-        className="main__comments_reply"
-        placeholder="Escreva sua resposta aqui :)"
+        className="reply"
+        placeholder={message}
         value={value}
         onChange={onChange}
       ></textarea>

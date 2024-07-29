@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import '../styles/ModalUsers.css'; 
+import '../styles/Modal.css'; 
 
 interface ModalProps {
   id: string;
@@ -8,7 +8,7 @@ interface ModalProps {
   trigger: React.ReactNode;
 }
 
-  const ModalUsers = ({ id, title, content, trigger }: ModalProps) => {
+  const Modal = ({ id, title, content, trigger }: ModalProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const handleOpen = () => setIsOpen(true);
   const handleClose = () => setIsOpen(false);
@@ -35,4 +35,4 @@ interface ModalProps {
   );
 };
 
-export default ModalUsers;
+export default Modal;
