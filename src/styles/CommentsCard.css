@@ -31,6 +31,14 @@
     color: var(--black);
   }
 
+  .modal_loading {
+    height: 339px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
   @media (min-width: 1024px) {
     h2.main__comments_title {
       font-size: 30px;
