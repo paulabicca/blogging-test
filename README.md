@@ -1,4 +1,4 @@
-# Título do projeto
+# Blogging
 
 Este projeto consiste em uma aplicação chamada Blogging. Essa aplicação foi desenvolvida com React, TypeScript e Vite, projetada com a abordagem mobile-first para garantir uma experiência de usuário otimizada em dispositivos móveis.
 
@@ -30,7 +30,7 @@ Para configurar o projeto em sua máquina local, siga os passos abaixo:
 3. **Inicie o servidor de desenvolvimento:**
 
    ```bash
-   npm run dev
+   npm install
    ```
 
 ### 📋 Pré-requisitos
@@ -42,12 +42,12 @@ Para configurar o projeto em sua máquina local, siga os passos abaixo:
 
 Para rodar todos os testes, utilize o seguinte comando:
 
-    ```bash
+    ```
     npm run test
     ```
 
 Caso encontre problemas com a execução dos testes ou queira limpar o cache do Jest, execute:
 
-  ```bash  
-  npx jest --clearCache
-  ```
+    ```
+    npx jest --clearCache
+    ```
