@@ -30,7 +30,7 @@ Para configurar o projeto em sua máquina local, siga os passos abaixo:
 3. **Inicie o servidor de desenvolvimento:**
 
    ```bash
-   npm install
+   npm run dev
    ```
 
 ### 📋 Pré-requisitos
