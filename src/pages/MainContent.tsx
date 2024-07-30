@@ -1,6 +1,7 @@
 import user from "../assets/imgs/users/avatar1.jpg";
 import CommentsList from "./CommentsList";
 import { useData } from "../hooks/useData";
+import React from 'react'
 
 const MainContent = () => {
   const { post, formattedDate, loading, error } = useData();

@@ -3,6 +3,7 @@ import CommentsCard from './CommentsCard';
 import { rawPost } from '../data/rawPost';
 import { Post, Comment } from '../types/Posts';
 import "../styles/CommentsList.css";
+import React from 'react'
 
 const CommentsList = () => {
   const [post, setPost] = useState<Post>(rawPost);

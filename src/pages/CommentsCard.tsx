@@ -8,6 +8,7 @@ import { ptBR } from "date-fns/locale";
 import Modal from "../components/Modal";
 import UserProfile from "../components/UserProfile";
 import "../styles/CommentsCard.css";
+import React from 'react'
 
 const calculateIndentation = (id?: number) => {
   if (id === undefined) {
