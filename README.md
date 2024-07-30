@@ -42,12 +42,12 @@ Para configurar o projeto em sua máquina local, siga os passos abaixo:
 
 Para rodar todos os testes, utilize o seguinte comando:
 
-    ```
-    npm run test
-    ```
+   ```bash
+   npm run test
+   ```
 
 Caso encontre problemas com a execução dos testes ou queira limpar o cache do Jest, execute:
 
-    ```
-    npx jest --clearCache
-    ```
+   ```bash
+   npx jest --clearCache
+   ```
