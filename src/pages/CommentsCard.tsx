@@ -1,6 +1,6 @@
 import "../styles/CommentsList.css";
 import { Comment } from "../types/Posts";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ReplyTextarea from "../components/ReplyTextarea";
 import { useData } from "../hooks/useData";
 import { format } from "date-fns";
@@ -8,7 +8,7 @@ import { ptBR } from "date-fns/locale";
 import Modal from "../components/Modal";
 import UserProfile from "../components/UserProfile";
 import "../styles/CommentsCard.css";
-import React from 'react'
+import React from "react";
 
 const calculateIndentation = (id?: number) => {
   if (id === undefined) {
@@ -31,8 +31,6 @@ const CommentsCard = ({
   const { post } = useData();
   const authorId = post?.author?.id || 0;
   const authorUsername = post?.author?.username || "Desconhecido";
-
-
 
   const handleReplyClick = () => {
     if (isReplying && replyContent.trim() !== "") {
@@ -61,11 +59,15 @@ const CommentsCard = ({
 
   const formattedDate = formatTimestamp(comment?.timestamp);
 
-  const handleId = () => {
-    if (comment && comment?.author && comment?.author?.id) {
+  const handleId = (authorId: number) => {
+    setUserId(authorId);
+  };
+ 
+  useEffect(() => {
+    if (comment?.author?.id) {
       setUserId(comment.author.id);
     }
-  };
+  }, [comment]); 
 
   return (
     <div className="main__coments_block" style={{ marginLeft: indentation }}>
@@ -75,12 +77,21 @@ const CommentsCard = ({
           title=""
           trigger={
             <div>
-              <a href="#modal-users" onClick={handleId}>{comment.author.username}</a> - {" "}
-              {formattedDate}
+              <a
+                href="#modal-users"
+                onClick={() => handleId(comment.author.id)}
+              >
+                {comment.author.username}
+              </a>{" "}
+              - {formattedDate}
             </div>
           }
           content={
-        <UserProfile userId={userId}/>
+            userId !== 0 ? (
+              <UserProfile userId={userId} />
+            ) : (
+              <div className="modal_loading">Loading perfil...</div>
+            )
           }
         />
       </div>
@@ -103,11 +114,7 @@ const CommentsCard = ({
       {comment.replies && comment.replies.length > 0 && (
         <div>
           {comment.replies.map((reply) => (
-            <CommentsCard
-              key={reply.id}
-              comment={reply}
-              addReply={addReply}
-            />
+            <CommentsCard key={reply.id} comment={reply} addReply={addReply} />
           ))}
         </div>
       )}

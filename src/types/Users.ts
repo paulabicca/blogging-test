@@ -21,7 +21,7 @@ export interface User {
 }
 
 export const fetchUsers = async (): Promise<User[]> => {
-  await new Promise(resolve => setTimeout(resolve, 10));
+  await new Promise(resolve => setTimeout(resolve, 1000));
   return users;
 };
 
