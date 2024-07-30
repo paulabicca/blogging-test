@@ -4,6 +4,8 @@ import { fetchUsers, User } from "../types/Users";
 import { FormatTimestamp } from "../utils/FormatTimestamp";
 import "../styles/UserProfile.css";
 import userImage from "../assets/imgs/users/user-default.png";
+import React from 'react'
+
 interface UsersComponentProps {
   userId: number;
 }

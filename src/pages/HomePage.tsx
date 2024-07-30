@@ -2,6 +2,7 @@
 import header from "../assets/imgs/header-image.jpg";
 import MainContent from "./MainContent";
 import "../styles/HomePage.css";
+import React from 'react'
 
 const HomePage = () => {
   return (

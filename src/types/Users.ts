@@ -1,6 +1,6 @@
 import { users } from '../data/users';
 
-export interface Post {
+export interface UserPost {
   id: number;
   title: string;
   subtitle: string;
