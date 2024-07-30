@@ -1,12 +1,10 @@
-import "./App.css";
-
+import "./Global.css";
+import HomePage from "./pages/HomePage";
+import React from 'react'
 function App() {
   return (
     <>
-      <h1>Hello World</h1>
-      <p>
-        Testing this <a href="#">page</a>
-      </p>
+      <HomePage/>
     </>
   );
 }

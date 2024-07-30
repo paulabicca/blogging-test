@@ -1,0 +1,26 @@
+:root {
+  --padding-textarea: 10px;
+     
+  /*colors*/
+  --primary-link: #007bff;
+  --black: #000000;
+  --white: #ffffff;
+
+  --grey: #808080;
+  --grey-primary: #777;
+
+  --blue-link: #589dbd;
+  --blue-link-hover: #1e3946;
+  --modal-profile: #99B9F5;
+  
+  /* font size */
+  --font-size-base: 1em;  /* 12px*/
+  --font-size-em-small: 0.8em; 
+  --font-size-h1-small: 1em; /* 12px*/
+
+  /* font weight */
+  --font-weight-base: 400; 
+  
+  /*blogging home*/
+  --header-banner-color: #03a9f5;
+}
